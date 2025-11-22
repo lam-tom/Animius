@@ -12,6 +12,7 @@ import com.lanlinju.animius.util.getDefaultDomain
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
+import java.net.URLEncoder
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 
@@ -28,7 +29,8 @@ object GirigiriSource : AnimeSource {
     }
 
     override suspend fun getSearchData(query: String, page: Int): List<AnimeBean> {
-        val source = DownloadManager.getHtml("${baseUrl}/search/${query}----------${page}---/")
+        val encodedQuery = URLEncoder.encode(query, "utf-8")
+        val source = DownloadManager.getHtml("${baseUrl}/search/${encodedQuery}----------${page}---/")
         val document = Jsoup.parse(source)
         val animeList = mutableListOf<AnimeBean>()
         document.select("div.public-list-box").forEach { el ->

@@ -16,9 +16,6 @@ class GirigiriSourceTest {
         // Verify the encoding matches expected format
         assert(expectedEncoded.isNotEmpty())
         assert(expectedEncoded != query) // Should be encoded
-        
-        println("Original query: $query")
-        println("Encoded query: $expectedEncoded")
     }
     
     @Test
@@ -29,9 +26,6 @@ class GirigiriSourceTest {
         
         // ASCII characters should remain mostly the same
         assert(expectedEncoded.isNotEmpty())
-        
-        println("Original query: $query")
-        println("Encoded query: $expectedEncoded")
     }
     
     @Test
@@ -44,8 +38,5 @@ class GirigiriSourceTest {
         assert(expectedEncoded.isNotEmpty())
         assert(expectedEncoded != query) // Should be encoded
         assert(expectedEncoded.contains("%")) // URL encoding uses %
-        
-        println("Original query: $query")
-        println("Encoded query: $expectedEncoded")
     }
 }
